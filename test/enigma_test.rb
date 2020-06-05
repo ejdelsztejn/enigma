@@ -1,5 +1,5 @@
 require_relative './test_helper'
-require_relative './lib/enigma'
+require './lib/enigma'
 
 class EnigmaTest < MiniTest::Test
   def test_it_exists

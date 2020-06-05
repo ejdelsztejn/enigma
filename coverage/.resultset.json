@@ -1,7 +1,13 @@
 {
   "Unit Tests": {
     "coverage": {
+      "/Users/jejdelman/turing/module1/enigma/lib/enigma.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      }
     },
-    "timestamp": 1591328790
+    "timestamp": 1591328874
   }
 }
