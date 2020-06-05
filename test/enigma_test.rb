@@ -10,6 +10,10 @@ class EnigmaTest < MiniTest::Test
 
   def test_it_can_generate_a_key
     skip
+    enigma = Enigma.new
+
+    key = enigma.generate_key
+    assert_equal 5, key.length
   end
 
   def test_it_can_return_if_there_is_a_date
