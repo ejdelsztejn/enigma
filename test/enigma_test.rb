@@ -56,7 +56,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_encrypt
-    skip
     enigma = Enigma.new
 
     assert_equal ({
@@ -67,7 +66,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_encrypt_capital_letters
-    skip
     enigma = Enigma.new
 
     assert_equal ({
@@ -78,7 +76,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_encrypt_all_characters
-    skip
     enigma = Enigma.new
 
     assert_equal ({
@@ -100,7 +97,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_create_encrypted_hash
-    skip
     enigma = Enigma.new
 
     enigma.encrypt("hello world", "02715",  "040895")
@@ -112,7 +108,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_shift_character
-    skip
     enigma = Enigma.new
     character = "h"
     shift_letter = :a
@@ -123,7 +118,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_decrypt
-    skip
     enigma = Enigma.new
 
     assert_equal ({
@@ -145,7 +139,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_unshift_character
-    skip
     enigma = Enigma.new
     character = "k"
     shift_letter = :a

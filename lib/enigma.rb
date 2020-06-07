@@ -33,7 +33,7 @@ class Enigma
     keys
   end
 
-  def encrypt(message, key, date = generate_date)
+  def encrypt(message, key, date)
     keys = generate_keys(key)
     offsets = generate_offsets(date)
     key_hash = generate_shifts(keys, offsets)
@@ -57,7 +57,7 @@ class Enigma
     create_encrypted_hash(shifted_string, key, date)
   end
 
-  def decrypt(message, key, date = generate_date)
+  def decrypt(message, key, date)
     keys = generate_keys(key)
     offsets = generate_offsets(date)
     key_hash = generate_shifts(keys, offsets)
