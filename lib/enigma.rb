@@ -30,4 +30,12 @@ class Enigma
       d: offset_date[3].to_i
     }
   end
+
+  def generate_shifts(keys, offsets)
+    keys[:a] += offsets[:a]
+    keys[:b] += offsets[:b]
+    keys[:c] += offsets[:c]
+    keys[:d] += offsets[:d]
+    keys
+  end
 end
