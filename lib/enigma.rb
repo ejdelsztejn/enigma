@@ -1,5 +1,3 @@
-require_relative './shift'
-
 class Enigma
   attr_reader :characters
   def initialize
@@ -37,7 +35,6 @@ class Enigma
     keys = generate_keys(key)
     offsets = generate_offsets(date)
     key_hash = generate_shifts(keys, offsets)
-    shift = Shift.new
     shifted_string = ''
     shift = 0
     message.downcase.chars.each do |char|
