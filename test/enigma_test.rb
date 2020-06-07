@@ -15,12 +15,11 @@ class EnigmaTest < MiniTest::Test
     assert_equal 27, enigma.characters.size
   end
 
-  def test_it_can_generate_keys
-    skip
+  def test_it_can_generate_key_string
     enigma = Enigma.new
 
-    p enigma.generate_keys
-    # assert_equal 5, key.length
+    p enigma.generate_key_string
+    assert_equal 5, key.length
   end
 
   def test_it_can_return_if_there_is_a_date
