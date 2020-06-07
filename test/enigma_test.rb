@@ -1,4 +1,5 @@
 require_relative './test_helper'
+require './lib/shift'
 require './lib/enigma'
 require 'date'
 
@@ -16,22 +17,46 @@ class EnigmaTest < MiniTest::Test
     assert_equal 27, enigma.characters.size
   end
 
+  def test_it_can_generate_keys
+    enigma = Enigma.new
+    key = "02715"
+
+    assert_equal ({
+      a: 2,
+      b: 27,
+      c: 71,
+      d: 15
+    }), enigma.generate_keys(key)
+  end
+
+  def test_it_can_generate_offsets
+    enigma = Enigma.new
+    date = "040895"
+
+    assert_equal ({
+      a: 1,
+      b: 0,
+      c: 2,
+      d: 5
+    }), enigma.generate_offsets(date)
+  end
+
   def test_it_can_generate_shifts
     enigma = Enigma.new
     key = "02715"
-    keys = enigma.generate_keys(key)
     date = "040895"
+    keys = enigma.generate_keys(key)
     offsets = enigma.generate_offsets(date)
-
     assert_equal ({
       a: 3,
       b: 27,
       c: 73,
       d: 20
-      }), enigma.generate_shifts(keys, offsets)
+    }), enigma.generate_shifts(keys, offsets)
   end
 
   def test_it_can_encrypt
+    skip
     enigma = Enigma.new
 
     assert_equal ({
@@ -42,6 +67,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_encrypt_capital_letters
+    skip
     enigma = Enigma.new
 
     assert_equal ({
@@ -52,6 +78,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_encrypt_all_characters
+    skip
     enigma = Enigma.new
 
     assert_equal ({
@@ -62,6 +89,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_encrypt_with_a_key
+    skip
     enigma = Enigma.new
 
     assert_equal ({
@@ -72,6 +100,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_create_encrypted_hash
+    skip
     enigma = Enigma.new
 
     enigma.encrypt("hello world", "02715",  "040895")
@@ -83,6 +112,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_shift_character
+    skip
     enigma = Enigma.new
     character = "h"
     shift_letter = :a
@@ -93,6 +123,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_decrypt
+    skip
     enigma = Enigma.new
 
     assert_equal ({
@@ -103,6 +134,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_decrypt_with_a_key
+    skip
     enigma = Enigma.new
 
     assert_equal ({
@@ -113,6 +145,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_unshift_character
+    skip
     enigma = Enigma.new
     character = "k"
     shift_letter = :a
