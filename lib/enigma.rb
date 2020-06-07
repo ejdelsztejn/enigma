@@ -38,4 +38,6 @@ class Enigma
     keys[:d] += offsets[:d]
     keys
   end
+
+  
 end
