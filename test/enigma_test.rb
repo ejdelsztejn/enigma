@@ -99,13 +99,12 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_decrypt
-    skip
     enigma = Enigma.new
 
     assert_equal ({
       encryption: "hello world",
       key: "02715",
       date: "040895"
-    }), enigma.created_encrypt_hash("keder ohulw", "02715",  "040895")
+    }), enigma.decrypt("keder ohulw", "02715",  "040895")
   end
 end
