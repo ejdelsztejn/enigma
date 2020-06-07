@@ -4,10 +4,14 @@
       "/Users/jejdelman/turing/module1/enigma/lib/enigma.rb": {
         "lines": [
           1,
+          1,
+          1,
+          2,
+          null,
           null
         ]
       }
     },
-    "timestamp": 1591328874
+    "timestamp": 1591540334
   }
 }

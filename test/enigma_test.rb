@@ -48,12 +48,12 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_encrypt
-    # skip
+    skip
     enigma = Enigma.new
   end
 
   def test_it_can_decrypt
-    # skip
+    skip
     enigma = Enigma.new
   end
 end
