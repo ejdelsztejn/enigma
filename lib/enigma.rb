@@ -33,10 +33,11 @@ class Enigma
     keys
   end
 
-  def encrypt(message, key, date)
+  def encrypt(message, key, date = Time.now.strftime("%d%m%y"))
     keys = generate_keys(key)
     offsets = generate_offsets(date)
     key_hash = generate_shifts(keys, offsets)
+    shift = Shift.new
     shifted_string = ''
     shift = 0
     message.downcase.chars.each do |char|
@@ -57,7 +58,7 @@ class Enigma
     create_encrypted_hash(shifted_string, key, date)
   end
 
-  def decrypt(message, key, date)
+  def decrypt(message, key, date = Time.now.strftime("%d%m%y"))
     keys = generate_keys(key)
     offsets = generate_offsets(date)
     key_hash = generate_shifts(keys, offsets)

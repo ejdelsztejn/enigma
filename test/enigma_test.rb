@@ -86,7 +86,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_encrypt_with_a_key
-    skip
     enigma = Enigma.new
 
     assert_equal ({
@@ -128,7 +127,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_decrypt_with_a_key
-    skip
     enigma = Enigma.new
 
     assert_equal ({
