@@ -25,15 +25,16 @@ class EnigmaTest < MiniTest::Test
     enigma = Enigma.new
     key = "02715"
 
-    assert_equal {
+    assert_equal ({
       a: 2,
       b: 27,
       c: 71,
       d: 15
-    }, enigma.generate_keys(key)
+    }), enigma.generate_keys(key)
   end
 
   def test_it_can_generate_todays_date
+    skip
     enigma = Enigma.new
 
     p enigma.generate_date
