@@ -11,7 +11,7 @@ class EnigmaTest < MiniTest::Test
   def test_it_has_characters
     enigma = Enigma.new
 
-    assert_instance_of Array, enigma.characters 
+    assert_instance_of Array, enigma.characters
   end
 
   def test_it_can_generate_keys
@@ -31,5 +31,29 @@ class EnigmaTest < MiniTest::Test
     enigma = Enigma.new
 
     p enigma.generate_date
+  end
+
+  def test_it_can_generate_offsets
+    skip
+    enigma = Enigma.new
+
+    p enigma.generate_offsets
+  end
+
+  def test_it_can_generate_shifts
+    skip
+    enigma = Enigma.new
+
+    p enigma.generate_shifts
+  end
+
+  def test_it_can_encrypt
+    # skip
+    enigma = Enigma.new
+  end
+
+  def test_it_can_decrypt
+    # skip
+    enigma = Enigma.new
   end
 end
