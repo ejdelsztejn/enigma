@@ -1,11 +1,9 @@
+require_relative './shift'
+
 class Enigma
   attr_reader :characters
   def initialize
     @characters = ("a".."z").to_a << " "
-  end
-
-  def generate_key_string
-    rand(99999).to_s.rjust(5, "0")
   end
 
   def generate_keys(key_string)
@@ -17,11 +15,7 @@ class Enigma
   }
   end
 
-  def generate_date
-    Time.now.strftime("%d%m%y")
-  end
-
-  def generate_offsets(date = generate_date)
+  def generate_offsets(date)
     offset_date = (date.to_i * date.to_i).to_s[-4..-1]
     {
       a: offset_date[0].to_i,
@@ -39,10 +33,11 @@ class Enigma
     keys
   end
 
-  def encrypt(message, key, date = generate_date)
+  def encrypt(message, key, date = Time.now.strftime("%d%m%y"))
     keys = generate_keys(key)
     offsets = generate_offsets(date)
     key_hash = generate_shifts(keys, offsets)
+    shift = Shift.new
     shifted_string = ''
     shift = 0
     message.downcase.chars.each do |char|
@@ -63,7 +58,7 @@ class Enigma
     create_encrypted_hash(shifted_string, key, date)
   end
 
-  def decrypt(message, key, date = generate_date)
+  def decrypt(message, key, date = Time.now.strftime("%d%m%y"))
     keys = generate_keys(key)
     offsets = generate_offsets(date)
     key_hash = generate_shifts(keys, offsets)

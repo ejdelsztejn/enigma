@@ -1,4 +1,5 @@
 require_relative './test_helper'
+require './lib/shift'
 require './lib/enigma'
 require 'date'
 
@@ -16,12 +17,6 @@ class EnigmaTest < MiniTest::Test
     assert_equal 27, enigma.characters.size
   end
 
-  def test_it_can_generate_key_string
-    enigma = Enigma.new
-
-    assert_equal 5, enigma.generate_key_string.length
-  end
-
   def test_it_can_generate_keys
     enigma = Enigma.new
     key = "02715"
@@ -34,12 +29,6 @@ class EnigmaTest < MiniTest::Test
     }), enigma.generate_keys(key)
   end
 
-  def test_it_can_generate_todays_date
-    enigma = Enigma.new
-
-    assert_equal Time.now.strftime("%d%m%y"), enigma.generate_date
-  end
-
   def test_it_can_generate_offsets
     enigma = Enigma.new
     date = "040895"
@@ -49,22 +38,21 @@ class EnigmaTest < MiniTest::Test
       b: 0,
       c: 2,
       d: 5
-      }), enigma.generate_offsets(date)
+    }), enigma.generate_offsets(date)
   end
 
   def test_it_can_generate_shifts
     enigma = Enigma.new
     key = "02715"
-    keys = enigma.generate_keys(key)
     date = "040895"
+    keys = enigma.generate_keys(key)
     offsets = enigma.generate_offsets(date)
-
     assert_equal ({
       a: 3,
       b: 27,
       c: 73,
       d: 20
-      }), enigma.generate_shifts(keys, offsets)
+    }), enigma.generate_shifts(keys, offsets)
   end
 
   def test_it_can_encrypt
