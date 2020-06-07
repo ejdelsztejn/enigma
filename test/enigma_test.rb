@@ -77,6 +77,26 @@ class EnigmaTest < MiniTest::Test
     }), enigma.encrypt("hello world", "02715",  "040895")
   end
 
+  def test_it_can_encrypt_capital_letters
+    enigma = Enigma.new
+
+    assert_equal ({
+      encryption: "keder ohulw",
+      key: "02715",
+      date: "040895"
+    }), enigma.encrypt("HELLO WORLD", "02715",  "040895")
+  end
+
+  def test_it_can_encrypt_all_characters
+    enigma = Enigma.new
+
+    assert_equal ({
+      encryption: "98!*!5*7!*!89",
+      key: "02715",
+      date: "040895"
+    }), enigma.encrypt("98!*!5*7!*!89", "02715",  "040895")
+  end
+
   def test_it_can_create_encrypted_hash
     enigma = Enigma.new
 

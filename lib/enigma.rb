@@ -88,8 +88,8 @@ class Enigma
   end
 
   def shift_character(character, shift_letter, key_hash, shifted_string)
-    if characters.include?(character)
-      new_arr = characters.rotate(characters.index(character))
+    if characters.include?(character.downcase)
+      new_arr = characters.rotate(characters.index(character.downcase))
       num = key_hash[shift_letter]
       num -= 27 until num <= 27
       num = 0 if num == 27
