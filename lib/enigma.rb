@@ -17,5 +17,7 @@ class Enigma
   }
   end
 
-  
+  def generate_date
+    Time.now.strftime("%d%m%y")
+  end
 end
