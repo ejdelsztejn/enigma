@@ -67,12 +67,7 @@ class EnigmaTest < MiniTest::Test
       }), enigma.generate_shifts(keys, offsets)
   end
 
-  def test_it_can_create_encrypted_hash
-    skip
-  end
-
   def test_it_can_encrypt
-    # skip
     enigma = Enigma.new
 
     assert_equal ({
@@ -82,8 +77,35 @@ class EnigmaTest < MiniTest::Test
     }), enigma.encrypt("hello world", "02715",  "040895")
   end
 
+  def test_it_can_create_encrypted_hash
+    enigma = Enigma.new
+
+    enigma.encrypt("hello world", "02715",  "040895")
+    assert_equal ({
+      encryption: "keder ohulw",
+      key: "02715",
+      date: "040895"
+    }), enigma.create_encrypted_hash("keder ohulw", "02715",  "040895")
+  end
+
+  def test_it_can_shift_character
+    enigma = Enigma.new
+    character = "h"
+    shift_letter = :a
+    key_hash = { a: 3, b: 27, c: 73, d: 20 }
+    shifted_string = ''
+
+    assert_equal "k", enigma.shift_character(character, shift_letter, key_hash, shifted_string)
+  end
+
   def test_it_can_decrypt
     skip
     enigma = Enigma.new
+
+    assert_equal ({
+      encryption: "hello world",
+      key: "02715",
+      date: "040895"
+    }), enigma.created_encrypt_hash("keder ohulw", "02715",  "040895")
   end
 end
