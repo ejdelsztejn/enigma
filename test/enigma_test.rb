@@ -107,4 +107,14 @@ class EnigmaTest < MiniTest::Test
       date: "040895"
     }), enigma.decrypt("keder ohulw", "02715",  "040895")
   end
+
+  def test_it_can_unshift_character
+    enigma = Enigma.new
+    character = "k"
+    shift_letter = :a
+    key_hash = { a: 3, b: 27, c: 73, d: 20 }
+    shifted_string = ''
+
+    assert_equal "h", enigma.unshift_character(character, shift_letter, key_hash, shifted_string)
+  end
 end
