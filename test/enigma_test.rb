@@ -42,23 +42,30 @@ class EnigmaTest < MiniTest::Test
 
   def test_it_can_generate_offsets
     enigma = Enigma.new
-    key = "02715"
-    key_hash = enigma.generate_keys(key)
     date = "040895"
 
     assert_equal ({
-      a: 3,
-      b: 27,
-      c: 73,
-      d: 20
+      a: 1,
+      b: 0,
+      c: 2,
+      d: 5
       }), enigma.generate_offsets
   end
 
   def test_it_can_generate_shifts
     skip
     enigma = Enigma.new
+    key = "02715"
+    key_hash = enigma.generate_keys(key)
+    date = "040895"
+    offsets = enigma.generate_offsets(date)
 
-    p enigma.generate_shifts
+    assert_equal ({
+      a: 3,
+      b: 27,
+      c: 73,
+      d: 20
+      }), enigma.generate_shifts
   end
 
   def test_it_can_encrypt
