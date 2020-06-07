@@ -53,7 +53,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_generate_shifts
-    skip
     enigma = Enigma.new
     key = "02715"
     key_hash = enigma.generate_keys(key)
@@ -65,7 +64,7 @@ class EnigmaTest < MiniTest::Test
       b: 27,
       c: 73,
       d: 20
-      }), enigma.generate_shifts
+      }), enigma.generate_shifts(key_hash, offsets)
   end
 
   def test_it_can_encrypt
