@@ -97,6 +97,16 @@ class EnigmaTest < MiniTest::Test
     }), enigma.encrypt("98!*!5*7!*!89", "02715",  "040895")
   end
 
+  def test_it_can_encrypt_with_a_key
+    enigma = Enigma.new
+
+    assert_equal ({
+      encryption: "nib udmcxpu",
+      key: "02715",
+      date: "070620"
+      }), enigma.encrypt("hello world", "02715")
+  end
+
   def test_it_can_create_encrypted_hash
     enigma = Enigma.new
 
@@ -126,6 +136,16 @@ class EnigmaTest < MiniTest::Test
       key: "02715",
       date: "040895"
     }), enigma.decrypt("keder ohulw", "02715",  "040895")
+  end
+
+  def test_it_can_decrypt_with_a_key
+    enigma = Enigma.new
+
+    assert_equal ({
+      encryption: "hello world",
+      key: "02715",
+      date: "070620"
+    }), enigma.decrypt("nib udmcxpu", "02715")
   end
 
   def test_it_can_unshift_character
