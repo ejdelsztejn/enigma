@@ -1,5 +1,6 @@
 require_relative './test_helper'
 require './lib/enigma'
+require 'date'
 
 class EnigmaTest < MiniTest::Test
   def test_it_exists
@@ -34,10 +35,9 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_it_can_generate_todays_date
-    skip
     enigma = Enigma.new
 
-    p enigma.generate_date
+    assert_equal Time.now.strftime("%d%m%y"), enigma.generate_date
   end
 
   def test_it_can_generate_offsets
