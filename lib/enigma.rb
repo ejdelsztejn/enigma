@@ -21,5 +21,13 @@ class Enigma
     Time.now.strftime("%d%m%y")
   end
 
-  
+  def generate_offsets(date = generate_date)
+    offset_date = (date.to_i * date.to_i).to_s[2, 4]
+    {
+      A: offset_date[0].to_i,
+      B: offset_date[1].to_i,
+      C: offset_date[2].to_i,
+      D: offset_date[3].to_i
+    }
+  end
 end
