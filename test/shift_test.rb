@@ -15,4 +15,10 @@ class ShiftTest < MiniTest::Test
     assert_equal Time.now.strftime("%d%m%y"), shift.date
     assert_equal 5, shift.key.length
   end
+
+  def test_it_can_take_a_date_as_argument
+    shift = Shift.new("040895")
+
+    assert_equal "040895", shift.date
+  end
 end
