@@ -8,31 +8,11 @@ class EnigmaTest < MiniTest::Test
     assert_instance_of Enigma, enigma
   end
 
-  def test_it_can_generate_a_key
+  def test_it_can_generate_keys
     skip
     enigma = Enigma.new
 
-    key = enigma.generate_key
-    assert_equal 5, key.length
-  end
-
-  def test_it_can_return_if_there_is_a_date
-    skip
-  end
-
-  def test_it_can_generate_todays_date
-    skip
-  end
-
-  def test_it_can_generate_offsets
-    skip
-  end
-
-  def test_it_can_generate_shifts
-    skip
-  end
-
-  def test_it_can_encrypt
-    skip
+    p enigma.generate_keys
+    # assert_equal 5, key.length
   end
 end
