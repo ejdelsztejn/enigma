@@ -12,6 +12,7 @@ class EnigmaTest < MiniTest::Test
     enigma = Enigma.new
 
     assert_instance_of Array, enigma.characters
+    assert_equal 27, enigma.characters.size
   end
 
   def test_it_can_generate_keys
