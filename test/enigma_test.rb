@@ -49,7 +49,7 @@ class EnigmaTest < MiniTest::Test
       b: 0,
       c: 2,
       d: 5
-      }), enigma.generate_offsets
+      }), enigma.generate_offsets(date)
   end
 
   def test_it_can_generate_shifts
