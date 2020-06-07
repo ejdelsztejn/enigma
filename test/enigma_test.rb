@@ -18,8 +18,7 @@ class EnigmaTest < MiniTest::Test
   def test_it_can_generate_key_string
     enigma = Enigma.new
 
-    p enigma.generate_key_string
-    assert_equal 5, key.length
+    assert_equal 5, enigma.generate_key_string.length
   end
 
   def test_it_can_return_if_there_is_a_date
