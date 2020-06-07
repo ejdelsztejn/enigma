@@ -16,4 +16,6 @@ class Enigma
     d: key_string[3, 2].to_i
   }
   end
+
+  
 end

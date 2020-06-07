@@ -40,10 +40,6 @@ class EnigmaTest < MiniTest::Test
     p enigma.generate_date
   end
 
-  def test_it_can_return_if_there_is_a_date
-    skip
-  end
-
   def test_it_can_generate_offsets
     skip
     enigma = Enigma.new
