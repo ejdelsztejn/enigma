@@ -140,7 +140,7 @@ class EnigmaTest < MiniTest::Test
 
     character2 = "!"
 
-    assert_equal "!", enigma.unshift_character(character2, shift_letter, key_hash, shifted_string)
+    assert_equal "h!", enigma.unshift_character(character2, shift_letter, key_hash, shifted_string)
   end
 
   def test_it_can_determine_letters_for_end
