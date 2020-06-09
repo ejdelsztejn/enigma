@@ -1,7 +1,8 @@
 require_relative './shiftable'
+require_relative './crackable'
 
 class Enigma
-  include Shiftable
+  include Shiftable, Crackable
 
   def encrypt(message, key, date = Time.now.strftime("%d%m%y"))
     keys = generate_keys(key)
@@ -48,12 +49,20 @@ class Enigma
         shift = 0
       end
     end
-    create_encrypted_hash(shifted_string, key, date)
+    create_decrypted_hash(shifted_string, key, date)
   end
 
   def create_encrypted_hash(message, key, date)
     {
       encryption: message,
+      key: key,
+      date: date
+    }
+  end
+
+  def create_decrypted_hash(message, key, date)
+    {
+      decryption: message,
       key: key,
       date: date
     }
