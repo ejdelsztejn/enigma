@@ -86,7 +86,7 @@ module Crackable
         shift = 0
       end
     end
-    create_encrypted_hash(shifted_string, determine_key(message, date), date)
+    create_decrypted_hash(shifted_string, determine_key(message, date), date)
   end
 
   def subtract_offsets(message, date)

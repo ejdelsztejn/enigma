@@ -113,7 +113,7 @@ class EnigmaTest < MiniTest::Test
     enigma = Enigma.new
 
     assert_equal ({
-      encryption: "hello world",
+      decryption: "hello world",
       key: "02715",
       date: "040895"
     }), enigma.decrypt("keder ohulw", "02715",  "040895")
@@ -123,7 +123,7 @@ class EnigmaTest < MiniTest::Test
     enigma = Enigma.new
 
     assert_equal ({
-      encryption: "hello world",
+      decryption: "hello world",
       key: "02715",
       date: Time.now.strftime("%d%m%y")
     }), enigma.decrypt("nib udmcxpu", "02715")
@@ -137,5 +137,62 @@ class EnigmaTest < MiniTest::Test
     shifted_string = ''
 
     assert_equal "h", enigma.unshift_character(character, shift_letter, key_hash, shifted_string)
+
+    character2 = "!"
+
+    assert_equal "!", enigma.unshift_character(character2, shift_letter, key_hash, shifted_string)
+  end
+
+  def test_it_can_determine_letters_for_end
+    enigma = Enigma.new
+    message = "vjqtb"
+
+    assert_equal [:a, :b, :c, :d, :a], enigma.determine_letters_for_end(message)
+  end
+
+  def test_it_can_determine_shifts_for_end
+    enigma = Enigma.new
+    message = "vjqtbeaweqihssi"
+
+    assert_equal ({:d=>8, :a=>14, :b=>5, :c=>5}), enigma.determine_shifts_for_end(message)
+  end
+
+  def test_it_can_subtract_offsets
+    enigma = Enigma.new
+    message = "vjqtbeaweqihssi"
+    date = "090620"
+
+    assert_equal ({:d=>8, :a=>10, :b=>1, :c=>5}), enigma.subtract_offsets(message, date)
+  end
+
+  def test_it_can_determine_key
+    enigma = Enigma.new
+    message = "vjqtbeaweqihssi"
+    date = "291018"
+
+    assert_equal "08304", enigma.determine_key(message, date)
+  end
+
+  def test_it_can_crack_with_date
+    enigma = Enigma.new
+    message = "vjqtbeaweqihssi"
+    date = "291018"
+
+    assert_equal ({
+      decryption: "hello world end",
+      date: "291018",
+      key: "08304"
+    }), enigma.crack("vjqtbeaweqihssi", "291018")
+  end
+
+  def test_it_can_crack_without_date
+    enigma = Enigma.new
+    message = "qhmetkxettdnlmdjslojxmsgakwcsyfi"
+
+    assert_equal ({
+      decryption: "you are a little sweet birdy end",
+      key: "15093",
+      date: "090620"
+      }), enigma.crack(message)
   end
 end

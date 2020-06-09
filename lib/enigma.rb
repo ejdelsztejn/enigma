@@ -49,7 +49,7 @@ class Enigma
         shift = 0
       end
     end
-    create_encrypted_hash(shifted_string, key, date)
+    create_decrypted_hash(shifted_string, key, date)
   end
 
   def create_encrypted_hash(message, key, date)
@@ -59,5 +59,12 @@ class Enigma
       date: date
     }
   end
-  require "pry"; binding.pry
+
+  def create_decrypted_hash(message, key, date)
+    {
+      decryption: message,
+      key: key,
+      date: date
+    }
+  end
 end
