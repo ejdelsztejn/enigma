@@ -87,9 +87,14 @@ module Crackable
     end
     shifted_string
   end
-  require "pry"; binding.pry
-  #
-  # def subtract_offsets(message, date)
-  #
-  # end
+
+  def subtract_offsets(message, date)
+    offsets = generate_offsets(date)
+    keys = determine_shifts_for_end(message)
+    keys[:a] -= offsets[:a]
+    keys[:b] -= offsets[:b]
+    keys[:c] -= offsets[:c]
+    keys[:d] -= offsets[:d]
+    keys
+  end
 end

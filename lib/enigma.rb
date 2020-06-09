@@ -2,8 +2,7 @@ require_relative './shiftable'
 require_relative './crackable'
 
 class Enigma
-  include Shiftable
-  include Crackable
+  include Shiftable, Crackable
 
   def encrypt(message, key, date = Time.now.strftime("%d%m%y"))
     keys = generate_keys(key)
@@ -60,4 +59,5 @@ class Enigma
       date: date
     }
   end
+  require "pry"; binding.pry
 end
