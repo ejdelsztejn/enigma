@@ -1,4 +1,6 @@
 module Crackable
+  CHARACTERS = ("a".."z").to_a << " "
+
   def determine_letters_for_end(message)
     shifts = []
     indx = 0
@@ -20,44 +22,34 @@ module Crackable
     shifts
   end
 
-  def create_end_letter_hash(message)
-    end_letters = determine_letters_for_end(message)[-4..-1]
-    {
-      " " => end_letters[0],
-      "e" => end_letters[1],
-      "n" => end_letters[2],
-      "d" => end_letters[3]
-    }
-  end
-
   def determine_shifts_for_end(message)
     message_end = message[-4..-1]
     shift_hash = { " " => 0, "e" => 0, "n" => 0, "d" => 0 }
     message_end.downcase.chars.each_with_index do |char, indx|
       shift = 0
       if indx == 0
-        new_arr = characters.rotate(characters.index(" "))
+        new_arr = CHARACTERS.rotate(CHARACTERS.index(" "))
         new_arr.each do |character|
           break if character == char
           shift += 1
         end
         shift_hash[" "] += shift
       elsif indx == 1
-        new_arr = characters.rotate(characters.index("e"))
+        new_arr = CHARACTERS.rotate(CHARACTERS.index("e"))
         new_arr.each do |character|
           break if character == char
           shift += 1
         end
         shift_hash["e"] += shift
       elsif indx == 2
-        new_arr = characters.rotate(characters.index("n"))
+        new_arr = CHARACTERS.rotate(CHARACTERS.index("n"))
         new_arr.each do |character|
           break if character == char
           shift += 1
         end
         shift_hash["n"] += shift
       else
-        new_arr = characters.rotate(characters.index("d"))
+        new_arr = CHARACTERS.rotate(CHARACTERS.index("d"))
         new_arr.each do |character|
           break if character == char
           shift += 1
@@ -66,17 +58,6 @@ module Crackable
       end
     end
     end_letters = determine_letters_for_end(message)[-4..-1]
-    {
-      end_letters[0] => shift_hash[" "],
-      end_letters[1] => shift_hash["e"],
-      end_letters[2] => shift_hash["n"],
-      end_letters[3] => shift_hash["d"]
-    }
-  end
-
-  def create_end_letter_hash(message)
-    end_letters = determine_letters_for_end(message)[-4..-1]
-    shift_hash = determine_shifts_for_end(message)
     {
       end_letters[0] => shift_hash[" "],
       end_letters[1] => shift_hash["e"],
@@ -106,4 +87,9 @@ module Crackable
     end
     shifted_string
   end
+  require "pry"; binding.pry
+  #
+  # def subtract_offsets(message, date)
+  #
+  # end
 end
