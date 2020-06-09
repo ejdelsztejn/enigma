@@ -1,7 +1,7 @@
 require './lib/enigma'
 
 enigma = Enigma.new
-
+require "pry"; binding.pry
 handle = File.open(ARGV[0], "r")
 to_crack = handle.read.chomp
 handle.close
@@ -14,3 +14,4 @@ writer.write(cracked_message)
 writer.close
 
 puts "Created '#{ARGV[1]}' with the key #{cracked[:key]} and date #{ARGV[2]}"
+require "pry"; binding.pry
