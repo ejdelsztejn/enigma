@@ -1,5 +1,6 @@
 module Crackable
   CHARACTERS = ("a".."z").to_a << " "
+  DATE = Time.now.strftime("%d%m%y")
 
   def determine_letters_for_end(message)
     shifts = []
@@ -66,7 +67,7 @@ module Crackable
     }
   end
 
-  def crack(message)
+  def crack(message, date = DATE)
     key_hash = determine_shifts_for_end(message)
     shifted_string = ''
     shift = 0
@@ -85,7 +86,7 @@ module Crackable
         shift = 0
       end
     end
-    shifted_string
+    create_encrypted_hash(shifted_string, determine_key(message, date), date)
   end
 
   def subtract_offsets(message, date)
@@ -96,5 +97,20 @@ module Crackable
     keys[:c] -= offsets[:c]
     keys[:d] -= offsets[:d]
     keys
+  end
+
+  def determine_key(message, date)
+    key_string = ''
+    keys = subtract_offsets(message, date).sort.to_h
+    key_string << keys[:a].to_s.rjust(2, "0")
+    keys.delete(:a)
+    keys.each do |key, value|
+      next_key = key_string[-1].to_i * 10
+      until next_key % 27 == value
+        next_key += 1
+      end
+      key_string << next_key.to_s[-1]
+    end
+    key_string
   end
 end
