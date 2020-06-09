@@ -10,13 +10,6 @@ class EnigmaTest < MiniTest::Test
     assert_instance_of Enigma, enigma
   end
 
-  def test_it_has_characters
-    enigma = Enigma.new
-
-    assert_instance_of Array, enigma.characters
-    assert_equal 27, enigma.characters.size
-  end
-
   def test_it_can_generate_keys
     enigma = Enigma.new
     key = "02715"
@@ -91,7 +84,7 @@ class EnigmaTest < MiniTest::Test
     assert_equal ({
       encryption: "nib udmcxpu",
       key: "02715",
-      date: "070620"
+      date: Time.now.strftime("%d%m%y")
       }), enigma.encrypt("hello world", "02715")
   end
 
@@ -132,7 +125,7 @@ class EnigmaTest < MiniTest::Test
     assert_equal ({
       encryption: "hello world",
       key: "02715",
-      date: "070620"
+      date: Time.now.strftime("%d%m%y")
     }), enigma.decrypt("nib udmcxpu", "02715")
   end
 

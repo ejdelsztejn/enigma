@@ -1,8 +1,7 @@
+require_relative './shiftable'
+
 class Enigma
-  attr_reader :characters
-  def initialize
-    @characters = ("a".."z").to_a << " "
-  end
+  include Shiftable
 
   def generate_keys(key_string)
     {
@@ -77,30 +76,6 @@ class Enigma
       end
     end
     create_encrypted_hash(shifted_string, key, date)
-  end
-
-  def shift_character(character, shift_letter, key_hash, shifted_string)
-    if characters.include?(character.downcase)
-      new_arr = characters.rotate(characters.index(character.downcase))
-      num = key_hash[shift_letter]
-      num -= 27 until num <= 27
-      num = 0 if num == 27
-      shifted_string << new_arr[num]
-    else
-      shifted_string << character
-    end
-  end
-
-  def unshift_character(character, shift_letter, key_hash, shifted_string)
-    if characters.include?(character)
-      new_arr = characters.rotate(characters.index(character))
-      num = key_hash[shift_letter]
-      num -= 27 until num <= 27
-      location = new_arr[0 - num]
-      shifted_string << location
-    else
-      shifted_string << character
-    end
   end
 
   def create_encrypted_hash(message, key, date)
