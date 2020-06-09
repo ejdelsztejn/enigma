@@ -17,5 +17,5 @@
   - I planned to stub the date in my last `enigma_test` method, for when using `crack` without inputting a date as an argument, but didn't get to it.
   - Coverage is at 100%.
 - **Version Control 3**
-  - 77 commits and 7 PRs.  I deleted my branches after I finished using them, but there were approximately 7. 
+  - 79 commits and 7 PRs.  I deleted my branches after I finished using them, but there were approximately 7. 
   - I tried to be detailed in my PRs, but I think that I could have done even more.  I worked hard to make them comprehensive, though, and I am proud with my progress as a Github user and this project really helped me building skills with branching, creating pull requests, and writing commit messages.
